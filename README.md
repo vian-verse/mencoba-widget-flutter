@@ -5,7 +5,7 @@ Sekalian buat belajar Flutter.
 
 Beberapa rencana widget/tulisan yang dicakup:
 
-1.	Instalasi
+1.	[Instalasi](https://medium.com/@vianv31253/belajar-flutter-instalasi-902d17a07e2c)
 2.	Pengenalan widget
 3.	Hello World
 4.	Aksi tekan tombol
