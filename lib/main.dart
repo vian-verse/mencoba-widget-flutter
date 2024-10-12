@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MainApp());
@@ -50,6 +51,12 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                           borderSide: BorderSide(width: 1),
                           borderRadius: BorderRadius.circular(20))),
                   keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "Harga harus terisi";
+                    }
+                  },
                 ),
               ],
             ),
