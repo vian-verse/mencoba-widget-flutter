@@ -53,14 +53,16 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                           borderRadius: BorderRadius.circular(20))),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  validator: (value){
-                    if(value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Harga harus terisi";
                     }
                     return null;
                   },
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   controller: xJumlah,
                   decoration: InputDecoration(
@@ -72,13 +74,33 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                           borderRadius: BorderRadius.circular(20))),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  validator: (value){
-                    if(value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Harga harus terisi";
                     }
                     return null;
                   },
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Hitung',style: TextStyle(color: Colors.white),),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        minimumSize: Size(140, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)
+                        ),
+                        shadowColor: Colors.blue,
+                        elevation: 10
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
