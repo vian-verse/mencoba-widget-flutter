@@ -56,6 +56,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     if(value!.isEmpty){
                       return "Harga harus terisi";
                     }
+                    return null;
                   },
                 ),
               ],
