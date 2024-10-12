@@ -10,10 +10,26 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+      title: 'Aplikasi Barang',
+      home: HalamanUtama(),
+    );
+  }
+}
+
+class HalamanUtama extends StatefulWidget {
+  const HalamanUtama({super.key});
+
+  @override
+  State<HalamanUtama> createState() => _HalamanUtamaState();
+}
+
+class _HalamanUtamaState extends State<HalamanUtama> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contoh Formulir'),
+        backgroundColor: Colors.redAccent,
       ),
     );
   }
