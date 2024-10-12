@@ -27,6 +27,7 @@ class HalamanUtama extends StatefulWidget {
 class _HalamanUtamaState extends State<HalamanUtama> {
   final formKey = GlobalKey<FormState>();
   TextEditingController xHarga = TextEditingController();
+  TextEditingController xJumlah = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,25 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                       labelText: 'Harga Barang',
                       hintText: 'Input Harga Barang',
                       prefixIcon: Icon(Icons.monetization_on),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1),
+                          borderRadius: BorderRadius.circular(20))),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "Harga harus terisi";
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 20,),
+                TextFormField(
+                  controller: xJumlah,
+                  decoration: InputDecoration(
+                      labelText: 'Jumlah Barang',
+                      hintText: 'Input Jumlah Barang',
+                      prefixIcon: Icon(Icons.discount_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(width: 1),
                           borderRadius: BorderRadius.circular(20))),
