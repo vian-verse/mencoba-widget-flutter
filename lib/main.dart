@@ -85,6 +85,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   height: 20,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       onPressed: () {},
@@ -97,6 +98,19 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                         ),
                         shadowColor: Colors.blue,
                         elevation: 10
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Ulangi',style: TextStyle(color: Colors.white),),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.redAccent,
+                          minimumSize: Size(140, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)
+                          ),
+                          shadowColor: Colors.blue,
+                          elevation: 10
                       ),
                     )
                   ],
