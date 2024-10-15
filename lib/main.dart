@@ -28,18 +28,20 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   final formKey = GlobalKey<FormState>();
   TextEditingController xHarga = TextEditingController();
   TextEditingController xJumlah = TextEditingController();
+  var totalHarga = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contoh Formulir'),
+        title: const Text('Contoh Formulir'),
         backgroundColor: Colors.redAccent,
       ),
       body: Form(
+        key: formKey,
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
                 TextFormField(
@@ -47,9 +49,9 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   decoration: InputDecoration(
                       labelText: 'Harga Barang',
                       hintText: 'Input Harga Barang',
-                      prefixIcon: Icon(Icons.monetization_on),
+                      prefixIcon: const Icon(Icons.monetization_on),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1),
+                          borderSide: const BorderSide(width: 1),
                           borderRadius: BorderRadius.circular(20))),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -60,7 +62,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
@@ -68,9 +70,9 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   decoration: InputDecoration(
                       labelText: 'Jumlah Barang',
                       hintText: 'Input Jumlah Barang',
-                      prefixIcon: Icon(Icons.discount_outlined),
+                      prefixIcon: const Icon(Icons.discount_outlined),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1),
+                          borderSide: const BorderSide(width: 1),
                           borderRadius: BorderRadius.circular(20))),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -81,40 +83,57 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Hitung',style: TextStyle(color: Colors.white),),
+                      onPressed: () {
+                        if(formKey.currentState!.validate()){
+                          totalHarga = int.parse(xHarga.text) * int.parse(xJumlah.text);
+                          setState(() {
+                            totalHarga;
+                          });
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.redAccent,
-                        minimumSize: Size(140, 50),
+                        minimumSize: const Size(140, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)
                         ),
                         shadowColor: Colors.blue,
                         elevation: 10
                       ),
+                      child: const Text('Hitung',style: TextStyle(color: Colors.white),),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Ulangi',style: TextStyle(color: Colors.white),),
+                      onPressed: () {
+                        xHarga.text = '';
+                        xJumlah.text = '';
+                        setState(() {
+                          totalHarga = 0;
+                        });
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.redAccent,
-                          minimumSize: Size(140, 50),
+                          minimumSize: const Size(140, 50),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)
                           ),
                           shadowColor: Colors.blue,
                           elevation: 10
                       ),
+                      child: const Text('Ulangi',style: TextStyle(color: Colors.white),),
                     )
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text('Total Harga Rp. $totalHarga', style: TextStyle(fontSize: 30),)
               ],
             ),
           ),
